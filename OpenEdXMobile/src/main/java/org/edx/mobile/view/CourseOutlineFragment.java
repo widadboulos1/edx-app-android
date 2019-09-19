@@ -22,11 +22,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.inject.Inject;
@@ -420,12 +420,6 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        fetchCourseRevenueStatus();
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
         if (getCourseRevenueStatus != null) {
@@ -588,12 +582,19 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
             getCourseRevenueStatus.enqueue(new Callback<CourseRevenueResponse>() {
                 @Override
                 public void onResponse(Call<CourseRevenueResponse> call, Response<CourseRevenueResponse> response) {
-                    CourseRevenueResponse courseRevenueStatus = response.body();
-                    if (courseRevenueStatus != null && courseRevenueStatus.isShowUpsell()) {
+                    final CourseRevenueResponse courseRevenueStatus = response.body();
+                    if (courseRevenueStatus != null && courseRevenueStatus.isShowUpsell()
+                    && !TextUtils.isEmpty(courseRevenueStatus.getBasketUrl())) {
                         llUpgradeToVerifiedFooter.setVisibility(View.VISIBLE);
-                        tvCourseValue.setText(courseRevenueStatus.getPrice());
+                        if (!TextUtils.isEmpty(courseRevenueStatus.getPrice())) {
+                            tvCourseValue.setText(courseRevenueStatus.getPrice());
+                        } else {
+                            tvCourseValue.setVisibility(View.GONE);
+                        }
                         getView().findViewById(R.id.ll_upgrade_button).setOnClickListener(view -> {
-                            // TODO: Move to the new screen having authenticated webview.
+                            environment.getRouter().showCourseUpgradeWebViewActivity(
+                                getActivity(), courseRevenueStatus.getBasketUrl()
+                            );
                         });
                         environment.getAnalyticsRegistry().trackMobilePaymentUpsellDisplayed(
                                 courseData.getCourse().getId());
@@ -638,6 +639,7 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
     public void onRevisit() {
         super.onRevisit();
         fetchLastAccessed();
+        fetchCourseRevenueStatus();
         if (adapter != null) {
             adapter.notifyDataSetChanged();
         }

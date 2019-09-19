@@ -36,6 +36,7 @@ import org.edx.mobile.util.ResourceUtil;
 import org.edx.mobile.util.SecurityUtil;
 import org.edx.mobile.util.links.WebViewLink;
 import org.edx.mobile.view.dialog.AuthenticatedWebViewActivity;
+import org.edx.mobile.view.dialog.ProgramWebViewActivity;
 import org.edx.mobile.whatsnew.WhatsNewActivity;
 
 import de.greenrobot.event.EventBus;
@@ -162,6 +163,14 @@ public class Router {
                                         @Nullable @ScreenDef String screenName) {
         activity.startActivity(CourseTabsDashboardActivity.newIntent(activity, model, courseId,
                 topicId, threadId, announcements, screenName));
+    }
+
+    public void showCourseUpgradeWebViewActivity(@NonNull Activity sourceActivity,
+                                                 @NonNull String webUrl) {
+        sourceActivity.startActivity(
+                AuthenticatedWebViewActivity.newIntent(sourceActivity, webUrl,
+                        sourceActivity.getResources().getString(R.string.place_order_title))
+        );
     }
 
     /**
@@ -441,7 +450,7 @@ public class Router {
         final CharSequence url = ResourceUtil.getFormattedString(
                 environment.getConfig().getProgramConfig().getDetailUrlTemplate(),
                 WebViewLink.Param.PATH_ID, pathId);
-        activity.startActivity(AuthenticatedWebViewActivity.newIntent(activity, url.toString(), title));
+        activity.startActivity(ProgramWebViewActivity.newIntent(activity, url.toString(), title));
     }
 
     /**

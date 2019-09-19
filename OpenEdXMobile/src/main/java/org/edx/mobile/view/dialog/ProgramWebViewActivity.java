@@ -8,14 +8,14 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import org.edx.mobile.base.BaseSingleFragmentActivity;
-import org.edx.mobile.view.AuthenticatedWebViewFragment;
+import org.edx.mobile.view.WebViewProgramFragment;
 
-public class AuthenticatedWebViewActivity extends BaseSingleFragmentActivity {
+public class ProgramWebViewActivity extends BaseSingleFragmentActivity {
     private static final String ARG_URL = "url";
     private static final String ARG_TITLE = "title";
 
     public static Intent newIntent(@NonNull Context context, @NonNull String url, @NonNull String title) {
-        return new Intent(context, AuthenticatedWebViewActivity.class)
+        return new Intent(context, ProgramWebViewActivity.class)
                 .putExtra(ARG_URL, url)
                 .putExtra(ARG_TITLE, title);
     }
@@ -31,6 +31,6 @@ public class AuthenticatedWebViewActivity extends BaseSingleFragmentActivity {
 
     @Override
     public Fragment getFirstFragment() {
-        return AuthenticatedWebViewFragment.newInstance(getIntent().getStringExtra(ARG_URL));
+        return WebViewProgramFragment.newInstance(getIntent().getStringExtra(ARG_URL));
     }
 }
