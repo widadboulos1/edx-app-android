@@ -265,22 +265,27 @@ public class RegisterActivity extends BaseFragmentActivity
     private void createAccount() {
         boolean hasError = false;
         // prepare query (POST body)
+        final String access_token = loginPrefs.getSocialLoginAccessToken();
+        final String provider = loginPrefs.getSocialLoginProvider();
+        boolean fromSocialNet = !TextUtils.isEmpty(access_token);
         Bundle parameters = new Bundle();
         String email = null, confirm_email = null;
         for (IRegistrationFieldView v : mFieldViews) {
             if (v.isValidInput()) {
-                if (v.getField().getName().equalsIgnoreCase(RegistrationFieldType.EMAIL.name())) {
-                    email = v.getCurrentValue().getAsString();
-                }
-                if (v.getField().getName().equalsIgnoreCase(RegistrationFieldType.CONFIRM_EMAIL.name())) {
-                    confirm_email = v.getCurrentValue().getAsString();
-                }
+                if(!fromSocialNet) {
+                    if (v.getField().getName().equalsIgnoreCase(RegistrationFieldType.EMAIL.name())) {
+                        email = v.getCurrentValue().getAsString();
+                    }
+                    if (v.getField().getName().equalsIgnoreCase(RegistrationFieldType.CONFIRM_EMAIL.name())) {
+                        confirm_email = v.getCurrentValue().getAsString();
+                    }
 
-                // Validating email field with confirm email field
-                if (email != null && confirm_email != null && !email.equalsIgnoreCase(confirm_email)) {
-                    v.handleError(v.getField().getErrorMessage().getRequired());
-                    showErrorPopup(v.getOnErrorFocusView());
-                    return;
+                    // Validating email field with confirm email field
+                    if (email != null && confirm_email != null && !email.equalsIgnoreCase(confirm_email)) {
+                        v.handleError(v.getField().getErrorMessage().getRequired());
+                        showErrorPopup(v.getOnErrorFocusView());
+                        return;
+                    }
                 }
                 if (v.hasValue()) {
                     // we submit the field only if it provides a value
@@ -305,9 +310,6 @@ public class RegisterActivity extends BaseFragmentActivity
         parameters.putString("terms_of_service", "true");
 
         //set parameter required by social registration
-        final String access_token = loginPrefs.getSocialLoginAccessToken();
-        final String provider = loginPrefs.getSocialLoginProvider();
-        boolean fromSocialNet = !TextUtils.isEmpty(access_token);
         if (fromSocialNet) {
             parameters.putString("access_token", access_token);
             parameters.putString("provider", provider);
@@ -481,15 +483,20 @@ public class RegisterActivity extends BaseFragmentActivity
         showRegularMessage(socialType);
         //populate the field with value from social site
         populateEmailFromSocialSite(socialType, accessToken);
-        //hide email and password field
+        //hide confirm email and password field as we don't need them in case of social signup
+        List<IRegistrationFieldView> extraFields = new ArrayList<>();
         for (IRegistrationFieldView field : this.mFieldViews) {
-            String fieldname = field.getField().getName();
-            if ("password".equalsIgnoreCase(fieldname)) {
+            String fieldName = field.getField().getName();
+            if (RegistrationFieldType.CONFIRM_EMAIL.name().equalsIgnoreCase(fieldName)) {
                 field.getView().setVisibility(View.GONE);
-                this.mFieldViews.remove(field);
-                break;
+                extraFields.add(field);
+            }
+            if (RegistrationFieldType.PASSWORD.name().equalsIgnoreCase(fieldName)) {
+                field.getView().setVisibility(View.GONE);
+                extraFields.add(field);
             }
         }
+        this.mFieldViews.removeAll(extraFields);
         // registrationLayout.requestLayout();
     }
 
