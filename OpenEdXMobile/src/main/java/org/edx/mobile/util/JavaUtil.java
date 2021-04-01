@@ -1,7 +1,11 @@
 package org.edx.mobile.util;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import org.edx.mobile.R;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -65,6 +69,31 @@ public class JavaUtil {
             return String.format("%02d:%02d", mins, secs);
         }
         return String.format("%02d:%02d:%02d", hours, mins, secs);
+    }
+
+    /**
+     * Converts and returns the provided duration into a readable format i.e. hh:mm. Returns null
+     * if duration is zero or negative.
+     *
+     * @param duration Video duration in seconds.
+     * @return Formatted duration.
+     */
+    @Nullable
+    public static String getVideoDurationString(Context context, long duration) {
+        if (duration <= 0) {
+            return null;
+        }
+        long d = duration;
+        int hours = (int) (d / 3600f);
+        d = d % 3600;
+        int mins = (int) (d / 60f);
+        int secs = (int) (d % 60);
+        if (secs >= 30)
+            mins += 1;
+        if (hours <= 0) {
+            return context.getResources().getQuantityString(R.plurals.video_duration_minutes, mins, mins);
+        }
+        return String.format("%s %s", context.getResources().getQuantityString(R.plurals.video_duration_hour, hours, hours), context.getResources().getQuantityString(R.plurals.video_duration_minutes, mins, mins));
     }
 
     /**

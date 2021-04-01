@@ -1,12 +1,15 @@
 package org.edx.mobile.util;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.SpannedString;
 import android.text.style.URLSpan;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
@@ -151,5 +154,13 @@ public class TextUtils {
         }
 
         return formattedHtml;
+    }
+
+    public static void setTextAppearance(Context context, TextView textView, int resId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            textView.setTextAppearance(resId);
+        } else {
+            textView.setTextAppearance(context, resId);
+        }
     }
 }

@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import org.edx.mobile.base.BaseFragment;
 import org.edx.mobile.core.IEdxEnvironment;
 import org.edx.mobile.model.course.CourseComponent;
+import org.edx.mobile.services.CourseManager;
 
 public abstract class CourseUnitFragment extends BaseFragment {
     public interface HasComponent {
@@ -22,6 +23,9 @@ public abstract class CourseUnitFragment extends BaseFragment {
 
     @Inject
     protected IEdxEnvironment environment;
+
+    @Inject
+    protected CourseManager courseManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

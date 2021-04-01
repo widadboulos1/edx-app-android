@@ -162,6 +162,7 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
 
         final View view = inflater.inflate(R.layout.fragment_course_outline, container, false);
         listView = (ListView) view.findViewById(R.id.outline_list);
+        listView.setDivider(null);
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
         errorNotification = new FullScreenErrorNotification(swipeContainer);
         loadingIndicator = view.findViewById(R.id.loading_indicator);
@@ -304,7 +305,7 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
             loadData(validateCourseComponent(courseComponent));
             loadingIndicator.setVisibility(View.GONE);
             // Send a server call in background for refreshed data
-            getCourseComponentFromServer(false);
+//            getCourseComponentFromServer(false);
         } else {
             // Course data is neither available in app session cache nor available in persistable cache
             getCourseComponentFromServer(true);

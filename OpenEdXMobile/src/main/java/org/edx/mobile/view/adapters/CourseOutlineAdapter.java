@@ -42,9 +42,11 @@ import org.edx.mobile.module.storage.IStorage;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.util.DateUtil;
 import org.edx.mobile.util.FileUtil;
+import org.edx.mobile.util.JavaUtil;
 import org.edx.mobile.util.MemoryUtil;
 import org.edx.mobile.util.ResourceUtil;
 import org.edx.mobile.util.TimeZoneUtils;
+import org.edx.mobile.util.UiUtil;
 import org.edx.mobile.util.VideoUtil;
 import org.edx.mobile.util.images.CourseCardUtils;
 import org.edx.mobile.util.images.TopAnchorFillWidthTransformation;
@@ -302,11 +304,12 @@ public class CourseOutlineAdapter extends BaseAdapter {
             if (isLastChildInBlock) {
                 viewHolder.halfSeparator.setVisibility(View.GONE);
             } else {
-                viewHolder.halfSeparator.setVisibility(View.VISIBLE);
+                viewHolder.wholeSeparator.setVisibility(View.VISIBLE);
+                viewHolder.halfSeparator.setVisibility(View.GONE);
             }
         }
 
-        viewHolder.rowType.setVisibility(View.GONE);
+//        viewHolder.rowType.setVisibility(View.GONE);
         viewHolder.rowSubtitleIcon.setVisibility(View.GONE);
         viewHolder.rowSubtitle.setVisibility(View.GONE);
         viewHolder.rowSubtitleDueDate.setVisibility(View.GONE);
@@ -323,7 +326,7 @@ public class CourseOutlineAdapter extends BaseAdapter {
 
     private void getRowViewForLeaf(ViewHolder viewHolder, final SectionRow row) {
         final CourseComponent unit = row.component;
-        viewHolder.rowType.setVisibility(View.VISIBLE);
+//        viewHolder.rowType.setVisibility(View.VISIBLE);
         viewHolder.rowSubtitleIcon.setVisibility(View.GONE);
         viewHolder.rowSubtitleDueDate.setVisibility(View.GONE);
         viewHolder.rowSubtitle.setVisibility(View.GONE);
@@ -341,28 +344,32 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 updateUIForVideo(viewHolder, videoData, videoBlockModel);
             } else if (videoBlockModel.getData().encodedVideos.youtube != null) {
                 final boolean isYoutubePlayerEnabled = config.getYoutubePlayerConfig().isYoutubePlayerEnabled();
-                viewHolder.rowType.setIcon(isYoutubePlayerEnabled ? FontAwesomeIcons.fa_youtube_play : FontAwesomeIcons.fa_laptop);
-                viewHolder.rowType.setIconColorResource(isYoutubePlayerEnabled ? R.color.primaryBaseColor : R.color.primaryXLightColor);
+                viewHolder.rowTitle.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                        UiUtil.getFontAwesomeDrawable(context, isYoutubePlayerEnabled ? FontAwesomeIcons.fa_youtube_play : FontAwesomeIcons.fa_laptop,
+                                R.dimen.small_icon_size, isYoutubePlayerEnabled ? R.color.primaryBaseColor : R.color.primaryXLightColor), null);
             }
         } else if (config.isDiscussionsEnabled() && row.component instanceof DiscussionBlockModel) {
-            viewHolder.rowType.setIcon(FontAwesomeIcons.fa_comments_o);
+            viewHolder.rowTitle.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                    UiUtil.getFontAwesomeDrawable(context, FontAwesomeIcons.fa_comments_o,
+                            R.dimen.small_icon_size, R.color.primaryBaseColor), null);
             checkAccessStatus(isDenialFeatureBasedEnrolments, viewHolder, unit);
         } else if (!unit.isMultiDevice()) {
             // If we reach here & the type is VIDEO, it means the video is webOnly
             viewHolder.bulkDownload.setVisibility(View.INVISIBLE);
-            viewHolder.rowType.setIcon(FontAwesomeIcons.fa_laptop);
-            viewHolder.rowType.setIconColorResource(R.color.primaryXLightColor);
+            viewHolder.rowTitle.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                    UiUtil.getFontAwesomeDrawable(context, FontAwesomeIcons.fa_laptop,
+                            R.dimen.small_icon_size, R.color.primaryXLightColor), null);
         } else {
             viewHolder.bulkDownload.setVisibility(View.INVISIBLE);
-            if (unit.getType() == BlockType.PROBLEM) {
-                viewHolder.rowType.setIcon(FontAwesomeIcons.fa_list);
-            } else {
-                viewHolder.rowType.setIcon(FontAwesomeIcons.fa_book);
-            }
+            viewHolder.rowTitle.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                    UiUtil.getFontAwesomeDrawable(context, unit.getType() == BlockType.PROBLEM ? FontAwesomeIcons.fa_list : FontAwesomeIcons.fa_book,
+                            R.dimen.small_icon_size, R.color.primaryBaseColor), null);
             checkAccessStatus(isDenialFeatureBasedEnrolments, viewHolder, unit);
         }
         if (unit.getType() == BlockType.OPENASSESSMENT) {
-            viewHolder.rowType.setIcon(FontAwesomeIcons.fa_edit);
+            viewHolder.rowTitle.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                    UiUtil.getFontAwesomeDrawable(context, FontAwesomeIcons.fa_edit,
+                            R.dimen.small_icon_size, R.color.primaryBaseColor), null);
         }
 
         if (isDenialFeatureBasedEnrolments) {
@@ -372,10 +379,22 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 viewHolder.lockedContent.setVisibility(View.VISIBLE);
             } else {
                 viewHolder.rowSubtitle.setText(R.string.not_available_on_mobile);
-                viewHolder.rowType.setIconColorResource(R.color.primaryXLightColor);
+                UiUtil.changeDrawableColor(context, viewHolder.rowTitle, R.color.primaryXLightColor);
             }
             viewHolder.rowSubtitlePanel.setVisibility(View.VISIBLE);
             viewHolder.rowSubtitle.setVisibility(View.VISIBLE);
+        }
+        if (unit.isCompleted() || (isVideoMode && unit.isCompletedForVideos())) {
+            viewHolder.rowContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.successXXLight));
+            viewHolder.wholeSeparator.setVisibility(View.VISIBLE);
+            viewHolder.wholeSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.successXLight));
+            viewHolder.rowCompleted.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_green_check));
+            viewHolder.rowCompleted.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.rowCompleted.setVisibility(View.INVISIBLE);
+        }
+        if(isVideoMode){
+            viewHolder.rowCompleted.setVisibility(View.GONE);
         }
     }
 
@@ -384,11 +403,7 @@ public class CourseOutlineAdapter extends BaseAdapter {
             dbStore.isUnitAccessed(new DataCallback<Boolean>(true) {
                 @Override
                 public void onResult(Boolean accessed) {
-                    if (accessed) {
-                        viewHolder.rowType.setIconColorResource(R.color.primaryXLightColor);
-                    } else {
-                        viewHolder.rowType.setIconColorResource(R.color.primaryBaseColor);
-                    }
+                    UiUtil.changeDrawableColor(context, viewHolder.rowTitle, accessed ? R.color.primaryXLightColor : R.color.primaryBaseColor);
                 }
 
                 @Override
@@ -401,13 +416,16 @@ public class CourseOutlineAdapter extends BaseAdapter {
 
     private void updateUIForVideo(@NonNull final ViewHolder viewHolder, @NonNull final DownloadEntry videoData,
                                   @NonNull final VideoBlockModel videoBlockModel) {
-        viewHolder.rowType.setIcon(FontAwesomeIcons.fa_film);
+        viewHolder.rowTitle.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                UiUtil.getFontAwesomeDrawable(context, FontAwesomeIcons.fa_film,
+                        R.dimen.small_icon_size, R.color.primaryBaseColor), null);
         viewHolder.numOfVideoAndDownloadArea.setVisibility(View.VISIBLE);
         viewHolder.bulkDownload.setVisibility(View.VISIBLE);
         viewHolder.rowSubtitlePanel.setVisibility(View.VISIBLE);
         if (videoData.getDuration() > 0L) {
             viewHolder.rowSubtitle.setVisibility(View.VISIBLE);
-            viewHolder.rowSubtitle.setText(videoData.getDurationReadable());
+            org.edx.mobile.util.TextUtils.setTextAppearance(context, viewHolder.rowSubtitle, R.style.semibold_text);
+            viewHolder.rowSubtitle.setText(JavaUtil.getVideoDurationString(context, videoData.duration));
         }
         if (videoData.getSize() > 0L) {
             viewHolder.rowSubtitleDueDate.setVisibility(View.VISIBLE);
@@ -424,11 +442,7 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 new DataCallback<DownloadEntry.WatchedState>(true) {
                     @Override
                     public void onResult(DownloadEntry.WatchedState result) {
-                        if (result != null && result == DownloadEntry.WatchedState.WATCHED) {
-                            viewHolder.rowType.setIconColorResource(R.color.primaryXLightColor);
-                        } else {
-                            viewHolder.rowType.setIconColorResource(R.color.primaryBaseColor);
-                        }
+                        UiUtil.changeDrawableColor(context, viewHolder.rowTitle, result == DownloadEntry.WatchedState.WATCHED ? R.color.primaryXLightColor : R.color.primaryBaseColor);
                     }
 
                     @Override
@@ -573,6 +587,20 @@ public class CourseOutlineAdapter extends BaseAdapter {
                         });
             }
         }
+        if (component.isCompleted() || (isVideoMode && component.isCompletedForVideos())) {
+            holder.rowContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.successXXLight));
+            holder.rowCompleted.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_green_check));
+            holder.wholeSeparator.setVisibility(View.VISIBLE);
+            holder.wholeSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.successXLight));
+            holder.rowCompleted.setVisibility(View.VISIBLE);
+        } else {
+            holder.rowContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
+            holder.wholeSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.neutralDark));
+            holder.rowCompleted.setVisibility(View.INVISIBLE);
+        }
+        if(isVideoMode){
+            holder.rowCompleted.setVisibility(View.GONE);
+        }
     }
 
     private String getFormattedDueDate(final String date) throws IllegalArgumentException {
@@ -633,6 +661,10 @@ public class CourseOutlineAdapter extends BaseAdapter {
             separator.setVisibility(View.GONE);
         } else {
             separator.setVisibility(View.VISIBLE);
+        }
+        if (row.component.isCompleted() || (isVideoMode && row.component.isCompletedForVideos())) {
+            titleView.setBackgroundColor(ContextCompat.getColor(context, R.color.successXXLight));
+            separator.setBackgroundColor(ContextCompat.getColor(context, R.color.successXLight));
         }
         return convertView;
     }
@@ -736,8 +768,12 @@ public class CourseOutlineAdapter extends BaseAdapter {
 
     public ViewHolder getTag(View convertView) {
         ViewHolder holder = new ViewHolder();
-        holder.rowType = (IconImageView) convertView
-                .findViewById(R.id.row_type);
+        holder.rowContainer = (LinearLayout) convertView
+                .findViewById(R.id.chapter_row_container);
+        holder.rowCompleted = (IconImageView) convertView
+                .findViewById(R.id.completed);
+//        holder.rowType = (IconImageView) convertView
+//                .findViewById(R.id.row_type);
         holder.rowTitle = (TextView) convertView
                 .findViewById(R.id.row_title);
         holder.rowSubtitle = (TextView) convertView
@@ -767,7 +803,9 @@ public class CourseOutlineAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        IconImageView rowType;
+        LinearLayout rowContainer;
+        IconImageView rowCompleted;
+        //        IconImageView rowType;
         TextView rowTitle;
         TextView rowSubtitle;
         TextView rowSubtitleDueDate;

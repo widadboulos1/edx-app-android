@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import de.greenrobot.event.EventBus;
 import subtitleFile.Caption;
@@ -361,6 +362,7 @@ public abstract class BaseCourseUnitVideoFragment extends CourseUnitFragment
                             watchedStateCallback);
         }
 
+        Objects.requireNonNull(courseManager.getComponentById(environment.getConfig().getApiUrlVersionConfig().getBlocksApiVersion(), unit.getCourseId(), unit.getId())).setCompleted(1);
         courseApi.markBlocksCompletion(unit.getCourseId(), new String[]{unit.getId()}).enqueue(new Callback<JSONObject>() {
             @Override
             protected void onResponse(@NonNull JSONObject responseBody) {
