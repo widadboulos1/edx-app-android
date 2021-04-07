@@ -20,8 +20,6 @@ import org.edx.mobile.model.course.CourseComponent;
 import org.edx.mobile.model.course.DiscussionBlockModel;
 import org.json.JSONObject;
 
-import java.util.Objects;
-
 public class CourseUnitDiscussionFragment extends CourseUnitFragment {
 
     @Inject
@@ -49,11 +47,10 @@ public class CourseUnitDiscussionFragment extends CourseUnitFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (savedInstanceState == null) {
-            Objects.requireNonNull(courseManager.getComponentById(environment.getConfig().getApiUrlVersionConfig().getBlocksApiVersion(), unit.getCourseId(), unit.getId())).setCompleted(1);
             courseApi.markBlocksCompletion(unit.getCourseId(), new String[]{unit.getId()}).enqueue(new Callback<JSONObject>() {
                 @Override
                 protected void onResponse(@NonNull JSONObject responseBody) {
-                    // Nothing to do here
+                    markComponentCompleted();
                 }
             });
             // First we need to get the discussion topic id to send to the posts fragment
