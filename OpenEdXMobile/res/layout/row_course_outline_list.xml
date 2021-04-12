@@ -23,8 +23,8 @@
 
         <org.edx.mobile.view.custom.IconImageViewXml
             android:id="@+id/completed"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/small_icon_size"
+            android:layout_height="@dimen/small_icon_size"
             android:baselineAlignBottom="true"
             android:gravity="center_vertical"
             android:src="@drawable/ic_green_check"
@@ -35,59 +35,29 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/widget_margin"
-            android:layout_marginEnd="@dimen/widget_margin_half"
+            android:layout_marginEnd="@dimen/widget_margin"
             android:layout_weight="1"
             android:orientation="vertical">
-
-            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-            <!--                android:id="@+id/row_title_container"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                app:layout_constraintBottom_toTopOf="@id/row_subtitle_panel"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent">-->
 
             <TextView
                 android:id="@+id/row_title"
                 style="@style/regular_edx_black_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/widget_margin_half"
+                android:drawablePadding="@dimen/edx_half_margin"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:paddingEnd="@dimen/widget_margin_half"
                 android:textDirection="locale"
                 android:textSize="@dimen/edx_base"
                 tools:text="Title" />
-
-            <!--                <FrameLayout-->
-            <!--                    android:id="@+id/row_type_container"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                    app:layout_constraintStart_toEndOf="@+id/row_title"-->
-            <!--                    app:layout_constraintTop_toTopOf="parent">-->
-
-            <!--                    <org.edx.mobile.view.custom.IconImageViewXml-->
-            <!--                        android:id="@+id/row_type"-->
-            <!--                        android:layout_width="20dp"-->
-            <!--                        android:layout_height="20dp"-->
-            <!--                        android:layout_gravity="start"-->
-            <!--                        android:layout_marginStart="@dimen/widget_margin"-->
-            <!--                        android:gravity="center_vertical"-->
-            <!--                        android:src="@drawable/ic_green_check"-->
-            <!--                        android:visibility="visible"-->
-            <!--                        app:iconColor="@color/primaryBaseColor" />-->
-            <!--                </FrameLayout>-->
-
-            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
             <LinearLayout
                 android:id="@+id/row_subtitle_panel"
                 style="@style/regular_grey_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/edx_x_quarter_margin"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -147,11 +117,17 @@
             android:id="@+id/bulk_download_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/edx_x_quarter_margin"
+            android:layout_marginEnd="@dimen/widget_margin_half"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:paddingEnd="@dimen/widget_margin_half"
-            android:visibility="gone">
+            android:visibility="visible">
+
+            <org.edx.mobile.view.custom.IconImageViewXml
+                android:id="@+id/bulk_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_holo_download" />
 
             <TextView
                 android:id="@+id/no_of_videos"
@@ -162,17 +138,8 @@
                 android:layout_marginEnd="@dimen/widget_margin_half"
                 android:textColor="@color/primaryXLightColor"
                 android:textSize="@dimen/edx_medium"
-                android:visibility="gone"
+                android:visibility="visible"
                 tools:text="0" />
-
-            <org.edx.mobile.view.custom.IconImageViewXml
-                android:id="@+id/bulk_download"
-                android:layout_width="@dimen/course_unit_block_listing_icon_width"
-                android:layout_height="@dimen/course_unit_block_listing_icon_height"
-                android:baselineAlignBottom="true"
-                android:paddingStart="@dimen/edx_quarter_margin"
-                android:paddingEnd="@dimen/course_unit_block_listing_icon_padding_end"
-                app:iconColor="@color/primaryBaseColor" />
         </LinearLayout>
 
     </LinearLayout>
@@ -180,6 +147,7 @@
     <View
         android:id="@+id/row_half_separator"
         style="@style/gray_separator"
+        android:layout_height="0dp"
         android:layout_marginStart="@dimen/course_item_half_separator_left_margin"
         android:visibility="gone" />
 

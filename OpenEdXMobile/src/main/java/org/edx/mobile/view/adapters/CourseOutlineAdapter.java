@@ -309,7 +309,6 @@ public class CourseOutlineAdapter extends BaseAdapter {
             }
         }
 
-//        viewHolder.rowType.setVisibility(View.GONE);
         viewHolder.rowSubtitleIcon.setVisibility(View.GONE);
         viewHolder.rowSubtitle.setVisibility(View.GONE);
         viewHolder.rowSubtitleDueDate.setVisibility(View.GONE);
@@ -326,13 +325,15 @@ public class CourseOutlineAdapter extends BaseAdapter {
 
     private void getRowViewForLeaf(ViewHolder viewHolder, final SectionRow row) {
         final CourseComponent unit = row.component;
-//        viewHolder.rowType.setVisibility(View.VISIBLE);
         viewHolder.rowSubtitleIcon.setVisibility(View.GONE);
         viewHolder.rowSubtitleDueDate.setVisibility(View.GONE);
         viewHolder.rowSubtitle.setVisibility(View.GONE);
         viewHolder.rowSubtitlePanel.setVisibility(View.GONE);
         viewHolder.bulkDownload.setVisibility(View.INVISIBLE);
         viewHolder.rowTitle.setText(unit.getDisplayName());
+        viewHolder.rowContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
+        viewHolder.rowCompleted.setVisibility(View.INVISIBLE);
+        viewHolder.wholeSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.neutralDark));
 
         boolean isDenialFeatureBasedEnrolments =
                 row.component.getAuthorizationDenialReason() == AuthorizationDenialReason.FEATURE_BASED_ENROLLMENTS;
@@ -384,14 +385,12 @@ public class CourseOutlineAdapter extends BaseAdapter {
             viewHolder.rowSubtitlePanel.setVisibility(View.VISIBLE);
             viewHolder.rowSubtitle.setVisibility(View.VISIBLE);
         }
+        viewHolder.wholeSeparator.setVisibility(View.VISIBLE);
         if (unit.isCompleted() || (isVideoMode && unit.isCompletedForVideos())) {
             viewHolder.rowContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.successXXLight));
-            viewHolder.wholeSeparator.setVisibility(View.VISIBLE);
             viewHolder.wholeSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.successXLight));
             viewHolder.rowCompleted.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_green_check));
             viewHolder.rowCompleted.setVisibility(View.VISIBLE);
-        } else {
-            viewHolder.rowCompleted.setVisibility(View.INVISIBLE);
         }
         if(isVideoMode){
             viewHolder.rowCompleted.setVisibility(View.GONE);
@@ -442,7 +441,8 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 new DataCallback<DownloadEntry.WatchedState>(true) {
                     @Override
                     public void onResult(DownloadEntry.WatchedState result) {
-                        UiUtil.changeDrawableColor(context, viewHolder.rowTitle, result == DownloadEntry.WatchedState.WATCHED ? R.color.primaryXLightColor : R.color.primaryBaseColor);
+                        UiUtil.changeDrawableColor(context, viewHolder.rowTitle,
+                                result == DownloadEntry.WatchedState.WATCHED ? R.color.primaryXLightColor : R.color.primaryBaseColor);
                     }
 
                     @Override
@@ -521,6 +521,11 @@ public class CourseOutlineAdapter extends BaseAdapter {
         String chapterId = path.get(1) == null ? "" : path.get(1).getDisplayName();
         String sequentialId = path.get(2) == null ? "" : path.get(2).getDisplayName();
 
+        holder.rowContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
+        holder.rowCompleted.setVisibility(View.INVISIBLE);
+        holder.wholeSeparator.setVisibility(View.VISIBLE);
+        holder.wholeSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.neutralDark));
+
         holder.rowTitle.setText(component.getDisplayName());
         holder.numOfVideoAndDownloadArea.setVisibility(View.VISIBLE);
         if (component.isGraded()) {
@@ -590,13 +595,8 @@ public class CourseOutlineAdapter extends BaseAdapter {
         if (component.isCompleted() || (isVideoMode && component.isCompletedForVideos())) {
             holder.rowContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.successXXLight));
             holder.rowCompleted.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_green_check));
-            holder.wholeSeparator.setVisibility(View.VISIBLE);
             holder.wholeSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.successXLight));
             holder.rowCompleted.setVisibility(View.VISIBLE);
-        } else {
-            holder.rowContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
-            holder.wholeSeparator.setBackgroundColor(ContextCompat.getColor(context, R.color.neutralDark));
-            holder.rowCompleted.setVisibility(View.INVISIBLE);
         }
         if(isVideoMode){
             holder.rowCompleted.setVisibility(View.GONE);
@@ -641,9 +641,7 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 row.bulkDownload.setIconColorResource(R.color.primaryBaseColor);
                 break;
             case ONLINE:
-                row.bulkDownload.setIcon(FontAwesomeIcons.fa_download);
-                row.bulkDownload.setIconAnimation(Animation.NONE);
-                row.bulkDownload.setIconColorResource(R.color.primaryXLightColor);
+                row.bulkDownload.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_holo_download));
                 break;
         }
         row.numOfVideoAndDownloadArea.setOnClickListener(listener);
@@ -772,8 +770,6 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 .findViewById(R.id.chapter_row_container);
         holder.rowCompleted = (IconImageView) convertView
                 .findViewById(R.id.completed);
-//        holder.rowType = (IconImageView) convertView
-//                .findViewById(R.id.row_type);
         holder.rowTitle = (TextView) convertView
                 .findViewById(R.id.row_title);
         holder.rowSubtitle = (TextView) convertView
@@ -805,7 +801,6 @@ public class CourseOutlineAdapter extends BaseAdapter {
     public static class ViewHolder {
         LinearLayout rowContainer;
         IconImageView rowCompleted;
-        //        IconImageView rowType;
         TextView rowTitle;
         TextView rowSubtitle;
         TextView rowSubtitleDueDate;
