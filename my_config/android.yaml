@@ -1,0 +1,17 @@
+# Core Settings
+API_HOST_URL: https://madrasafree.com
+ENVIRONMENT_DISPLAY_NAME: Madrasa
+PLATFORM_NAME: Madrasa
+PLATFORM_DESTINATION_NAME: madrasafree.com
+FEEDBACK_EMAIL_ADDRESS: yaniv@madrasafree.com
+OAUTH_CLIENT_ID: uMqVttUIoFg5q9tcwGyxm88tXBQb7bp1iYOJlAYd
+
+# Features
+DISCOVERY:
+  COURSE:
+    TYPE: 'native'
+NEW_LOGISTRATION_ENABLED: True
+USER_PROFILES_ENABLED: True
+COURSE_VIDEOS_ENABLED: False
+
+
