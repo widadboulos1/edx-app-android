@@ -19,6 +19,6 @@
         android:layout_height="@dimen/row_height_cc_option"
         android:gravity="center_vertical|start"
         android:textColor="@color/neutralXDark"
-        android:textDirection="locale"
+        android:textDirection="rtl"
         android:padding="@dimen/widget_margin" />
 </LinearLayout>

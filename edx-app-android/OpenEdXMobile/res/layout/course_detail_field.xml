@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:gravity="center|start"
             android:paddingStart="@dimen/widget_margin"
-            android:textDirection="locale"
+            android:textDirection="rtl"
             android:textSize="@dimen/edx_base"
             tools:text="Field:" />
 
@@ -43,7 +43,7 @@
             android:gravity="center|start"
             android:paddingStart="@dimen/widget_margin"
             android:singleLine="true"
-            android:textDirection="locale"
+            android:textDirection="rtl"
             android:textSize="@dimen/edx_base"
             tools:text="Course detail field description. This should be cut off" />
     </LinearLayout>
