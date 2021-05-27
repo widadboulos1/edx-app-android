@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- drawable/logo_colors.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="158dp"
+    android:height="124dp"
+    android:viewportWidth="158"
+    android:viewportHeight="124"
+    >
+
+    <group>
+
+        <clip-path
+            android:pathData="M0 0H158V124H0V0Z"
+            />
+
+    </group>
+
+</vector>
+
+

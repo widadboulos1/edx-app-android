@@ -35,21 +35,12 @@
                     android:layout_marginBottom="@dimen/login_logo_margin_bottom">
 
                     <ImageView
-                        android:id="@+id/login_map"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:contentDescription="@null"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/login_screen_image" />
-
-                    <ImageView
                         android:id="@+id/login_logo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription="@string/phonetic_app_name"
-                        android:src="@drawable/login_screen_logo" />
+                        android:src="@drawable/madrasa_logo" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -60,6 +51,18 @@
                     android:paddingStart="@dimen/login_margin_horizontal"
                     android:paddingEnd="@dimen/login_margin_horizontal">
 
+                    <include
+                        android:id="@+id/social_auth"
+                        layout="@layout/panel_social_auth" />
+
+
+                    <org.edx.mobile.view.custom.DividerWithTextView
+                        android:id="@+id/text_alternate_sign_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/or_fill_information" />
+
+
                     <org.edx.mobile.view.custom.EdxTextInputLayout
                         android:id="@+id/usernameWrapper"
                         style="@style/Widget.Design.TextInputLayout"
@@ -69,6 +72,7 @@
                         android:paddingStart="@dimen/login_field_horizontal_padding"
                         android:paddingEnd="@dimen/login_field_horizontal_padding"
                         android:textColorHint="@color/neutralXXDark">
+
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/email_et"
@@ -109,7 +113,7 @@
                         android:focusable="true"
                         android:gravity="center"
                         android:text="@string/forgot_password"
-                        android:textColor="@color/infoBase"
+                        android:textColor="#5D82D9"
                         android:textSize="@dimen/edx_x_small" />
 
                     <FrameLayout
@@ -134,15 +138,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <org.edx.mobile.view.custom.DividerWithTextView
-                            android:id="@+id/text_alternate_sign_in"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/or_sign_in_with" />
-
-                        <include
-                            android:id="@+id/social_auth"
-                            layout="@layout/panel_social_auth" />
                     </LinearLayout>
 
                     <TextView

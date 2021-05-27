@@ -41,6 +41,14 @@
                     <include layout="@layout/panel_message_with_check" />
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/login_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/phonetic_app_name"
+                    android:src="@drawable/madrasa_logo" />
+
                 <org.edx.mobile.view.custom.DividerWithTextView
                     android:id="@+id/signup_with_row"
                     android:layout_width="match_parent"
@@ -107,7 +115,7 @@
                     android:id="@+id/by_creating_account_tv"
                     style="@style/agreement_text_style"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="84dp"
                     tools:text="@string/by_creating_account" />
             </LinearLayout>
         </ScrollView>

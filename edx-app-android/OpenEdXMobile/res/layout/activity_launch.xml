@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:splitMotionEvents="false"
-        tools:background="@drawable/launch_background">
+        tools:background="@drawable/madrasa_background">
 
         <ImageView
             android:id="@+id/edx_logo"
@@ -16,7 +16,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/edx_quadruple_margin"
             android:contentDescription="@string/phonetic_app_name"
-            android:src="@drawable/launch_screen_logo" />
+            android:src="@drawable/madrasa_logo_blue" />
 
         <LinearLayout
             android:id="@+id/bottom_layout"
@@ -37,7 +37,7 @@
                 android:layout_height="@dimen/auth_panel_btn_height"
                 android:layout_gravity="center_vertical"
                 android:layout_marginBottom="@dimen/widget_margin_half"
-                android:background="@drawable/edx_brand_button"
+                android:background="#5D82D9"
                 android:contentDescription="@string/sign_up_and_learn"
                 android:focusable="true"
                 android:padding="@dimen/widget_margin_half"
@@ -55,7 +55,7 @@
                 android:focusable="true"
                 android:gravity="center"
                 android:text="@string/already_have_an_account"
-                android:textColor="@android:color/white"
+                android:textColor="#5D82D9"
                 android:textSize="@dimen/edx_medium" />
         </LinearLayout>
 
