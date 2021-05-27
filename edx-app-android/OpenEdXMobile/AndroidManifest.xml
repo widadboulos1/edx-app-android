@@ -36,7 +36,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         tools:replace="android:supportsRtl"
-        android:supportsRtl="${supportsRtl}"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <activity

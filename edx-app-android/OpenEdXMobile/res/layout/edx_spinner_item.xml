@@ -12,5 +12,5 @@
     android:singleLine="true"
     android:textColor="@color/primaryBaseColor"
     android:textSize="@dimen/edx_x_small"
-    android:textDirection="locale"
+    android:textDirection="rtl"
     tools:text="Item text" />
