@@ -81,41 +81,4 @@
         </LinearLayout>
     </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_graded_content_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/infoXXLight"
-        android:orientation="vertical"
-        android:padding="@dimen/container_padding"
-        android:visibility="gone"
-        tools:visibility="visible">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <org.edx.mobile.view.custom.IconImageViewXml
-                android:layout_width="@dimen/medium_icon_size"
-                android:layout_height="@dimen/medium_icon_size"
-                android:layout_marginTop="@dimen/widget_margin_half"
-                android:layout_marginEnd="@dimen/edx_margin"
-                app:iconColor="@color/primaryBaseColor"
-                app:iconName="fa-trophy" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/course_value_prop_message"
-                android:textColor="@color/neutralBlackT"
-                android:textSize="@dimen/edx_small" />
-        </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_learn_more"
-            style="@style/edX.Widget.PrimaryActionButton"
-            android:padding="@dimen/edx_half_margin"
-            android:text="@string/course_value_prop_button" />
-    </LinearLayout>
 </LinearLayout>

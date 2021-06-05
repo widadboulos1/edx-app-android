@@ -16,29 +16,11 @@
             <LinearLayout
                 android:id="@+id/profile_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:layout_height="300dp"
+                android:background="@drawable/profile_picture_background"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="@dimen/edx_margin">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
-                    style="@style/profile_image"
-                    android:layout_width="@dimen/user_profile_image_diameter"
-                    android:layout_height="@dimen/user_profile_image_diameter"
-                    app:civ_border_width="@dimen/user_profile_image_border_width"
-                    tools:src="@drawable/profile_photo_placeholder" />
-
-                <TextView
-                    android:id="@+id/name_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/widget_margin"
-                    android:layout_marginTop="@dimen/widget_margin"
-                    android:textColor="@color/primaryBaseColor"
-                    android:textSize="@dimen/edx_xx_large"
-                    tools:text="username" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,7 +90,28 @@
                         android:visibility="gone"
                         tools:text="@string/profile_sharing_limited_by_you"
                         tools:visibility="visible" />
+
                 </LinearLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    style="@style/profile_image"
+                    android:layout_width="@dimen/user_profile_image_diameter"
+                    android:layout_height="@dimen/user_profile_image_diameter"
+                    app:civ_border_width="@dimen/user_profile_image_border_width"
+                    tools:src="@drawable/profile_photo_placeholder" />
+
+                <TextView
+                    android:id="@+id/name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widget_margin"
+                    android:layout_marginBottom="@dimen/widget_margin"
+                    android:textColor="@color/primaryBaseColor"
+                    android:textSize="@dimen/edx_xx_large"
+                    tools:text="username" />
+
+
             </LinearLayout>
 
             <com.google.android.material.tabs.TabLayout
