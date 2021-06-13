@@ -21,7 +21,7 @@
       In that case, a play icon is shown on top of the course image. This is the content description.-->
     <string name="go_to_video">המשך לוידאו</string>
     <!--View Course button text text-->
-    <string name="view_course_button_text">צפו בקורס</string>
+    <string name="view_course_button_text">להתחלת הקורס!</string>
     <!--Floating overlay text shown to user when they succeed at enrolling in a course-->
     <string name="you_are_now_enrolled">כעת אתם רשומים בקורס זה.</string>
     <!--Floating overlay text shown to user when user already enrolled in a course-->
@@ -113,7 +113,7 @@
     <!--Content description for edit profile button-->
     <string name="open_profile_button">פתח פרופיל</string>
     <!--Title of user's course list screen-->
-    <string name="label_my_courses">קורסים</string>
+    <string name="label_my_courses">הקורסים שלי</string>
     <!--Title of user's program list screen-->
     <string name="label_my_programs">תכניות</string>
     <!--Title of native Find Courses Screen-->
@@ -123,7 +123,7 @@
     <!--Title of Degrees tab on Discovery screen-->
     <string name="label_degrees">תארים</string>
     <!--Title of Find Courses tab on Main Dashboard screen-->
-    <string name="label_discovery">גילוי</string>
+    <string name="label_discovery">כל הקורסים</string>
     <!--Button allowing users to send an email for feedback-->
     <string name="label_submit_feedback">הגש משוב</string>
     <!--Toggle switch on state label-->

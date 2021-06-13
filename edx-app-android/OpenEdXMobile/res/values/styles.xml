@@ -514,7 +514,7 @@
         <item name="android:minHeight">@dimen/edx_button_height</item>
         <item name="android:textColor">@drawable/edx_enroll_button_text_color</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:background">@drawable/edx_enroll_button</item>
+        <item name="android:background">@drawable/madrasa_brand_button</item>
         <item name="android:textSize">@dimen/edx_small</item>
         <item name="android:textStyle">bold</item>
         <item name="android:text">@string/enroll_now_button_text</item>
