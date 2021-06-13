@@ -19,7 +19,8 @@
         android:layout_gravity="bottom"
         android:background="@color/transparent_white_85"
         android:minHeight="@dimen/course_detail_card_height"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="0dp"

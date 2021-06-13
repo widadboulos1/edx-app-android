@@ -37,7 +37,7 @@
                 android:layout_height="@dimen/auth_panel_btn_height"
                 android:layout_gravity="center_vertical"
                 android:layout_marginBottom="@dimen/widget_margin_half"
-                android:background="#5D82D9"
+                android:background="@drawable/madrasa_brand_button"
                 android:contentDescription="@string/sign_up_and_learn"
                 android:focusable="true"
                 android:padding="@dimen/widget_margin_half"

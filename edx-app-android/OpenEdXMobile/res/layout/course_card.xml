@@ -35,12 +35,14 @@
             android:paddingTop="@dimen/widget_margin"
             android:paddingEnd="@dimen/widget_margin"
             android:paddingRight="@dimen/widget_margin"
-            android:paddingBottom="@dimen/widget_margin">
+            android:paddingBottom="@dimen/widget_margin"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/course_name"
                 style="@style/course_card_title"
                 tools:text="@string/course_name" />
+
 
             <TextView
                 android:id="@+id/course_details"

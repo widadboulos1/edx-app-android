@@ -106,7 +106,7 @@
     </style>
 
     <style name="AppTheme.Launch" parent="AppTheme.NoActionBar">
-        <item name="android:windowBackground">@drawable/launch_background</item>
+        <item name="android:windowBackground">@drawable/madrasa_background</item>
         <item name="android:layoutDirection">rtl</item>
     </style>
 

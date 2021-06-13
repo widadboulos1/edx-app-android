@@ -19,6 +19,7 @@
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:divider="@android:color/transparent"
+                android:background="@color/white"
                 android:dividerHeight="@dimen/widget_margin_half"
                 android:paddingTop="@dimen/widget_margin_half"
                 android:paddingBottom="@dimen/widget_margin_half"
