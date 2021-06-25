@@ -22,11 +22,12 @@ buildscript {
 }
 
 apply plugin: 'edxapp'
-apply plugin: 'kotlin-android-extensions'
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt' //To enable data binding with kotlin
 apply plugin: 'jacoco-android'
+apply plugin: 'kotlin-android-extensions'
 edx {
     platform = ANDROID
 }
@@ -208,13 +209,13 @@ dependencies {
     }
 
     // Firebase Crashlytics SDK
-    implementation ('com.google.firebase:firebase-crashlytics:17.2.2'){
+    implementation ('com.google.firebase:firebase-crashlytics:18.1.0'){
         exclude group: 'javax.inject'
         transitive = true
     }
 
     // Recommended: Add the Google Analytics SDK along Firebase Crashlytics SDK
-    implementation 'com.google.firebase:firebase-analytics:17.4.2'
+    implementation 'com.google.firebase:firebase-analytics:19.0.0'
 
     // Branch SDK
     // Check this link for guide to updating Branch integration:
