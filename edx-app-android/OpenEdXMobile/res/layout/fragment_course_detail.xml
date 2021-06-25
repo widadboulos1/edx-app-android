@@ -33,7 +33,9 @@
         android:layout_height="wrap_content"
         android:divider="@drawable/edx_x_divider"
         android:orientation="vertical"
-        android:showDividers="middle">
+        android:showDividers="middle"
+        android:visibility="gone"
+        >
 
 
         <FrameLayout
@@ -43,7 +45,6 @@
             android:layout_marginTop="@dimen/common_course_display_margin_top"
             android:layout_marginBottom="@dimen/common_course_display_margin_top"
             android:background="@color/neutralLight"
-
             android:orientation="vertical"
             android:visibility="gone">
 
