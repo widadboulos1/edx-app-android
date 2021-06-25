@@ -44,8 +44,9 @@
                 <ImageView
                     android:id="@+id/login_logo"
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
                     android:contentDescription="@string/phonetic_app_name"
                     android:src="@drawable/madrasa_logo" />
 
@@ -87,6 +88,7 @@
                         android:layout_marginEnd="@dimen/edx_x_small"
                         android:focusable="true"
                         android:text="@string/show_optional_text"
+                        android:visibility="invisible"
                         android:textSize="@dimen/edx_small" />
                 </LinearLayout>
 
