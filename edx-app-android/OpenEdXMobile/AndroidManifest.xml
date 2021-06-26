@@ -371,7 +371,7 @@
         <!-- Set the icon for notifications -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_notification" />
+            android:resource="@drawable/madrasa_logo" />
         <!-- Set color used with incoming notification messages.  -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
