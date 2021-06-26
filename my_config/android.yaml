@@ -27,4 +27,9 @@ FIREBASE:
   ENABLED: true
   ANALYTICS_SOURCE: 'firebase'
   CLOUD_MESSAGING_ENABLED: false
+  PROJECT_NUMBER: '840337900811'
+  PROJECT_ID: 'madrasafreeapp'
+  OAUTH_CLIENT_ID: '840337900811-05clio8hdk16tflsmkatisg7cg8e2dfl.apps.googleusercontent.com'
+  CURRENT_KEY: 'AIzaSyAyegtPEceocCTfp7uien6LtFSeCGkjiMM'
+  MOBILE_SDK_APP_ID: '1:840337900811:android:6d7e5b386fba7e9c444e0e'
   
