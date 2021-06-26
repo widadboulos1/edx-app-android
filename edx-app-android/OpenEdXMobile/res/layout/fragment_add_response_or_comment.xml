@@ -64,7 +64,8 @@
             <FrameLayout
                 android:id="@+id/btnAddComment"
                 style="@style/edX.Widget.CreationButtonLayout"
-                android:contentDescription="@string/discussion_add_response_button_description">
+                android:contentDescription="@string/discussion_add_response_button_description"
+                android:background="@drawable/madrasa_brand_button">
 
                 <TextView
                     android:id="@+id/btnAddCommentText"

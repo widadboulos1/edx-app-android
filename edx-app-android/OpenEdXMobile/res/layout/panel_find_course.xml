@@ -41,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/edx_margin"
+                    android:background="@drawable/madrasa_brand_button"
                     android:text="@string/find_course_btn_text" />
 
             </LinearLayout>

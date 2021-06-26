@@ -96,7 +96,8 @@
 
             <FrameLayout
                 style="@style/edX.Widget.CreationButtonLayout"
-                android:id="@+id/add_post_button">
+                android:id="@+id/add_post_button"
+                android:background="@drawable/madrasa_brand_button">
 
                 <TextView
                     style="@style/edX.Widget.CreationButton"
