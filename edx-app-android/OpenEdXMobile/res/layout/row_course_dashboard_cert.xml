@@ -52,7 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/course_details_view_cert_button"
-                android:minHeight="30dp">
+                android:minHeight="30dp"
+                android:background="@drawable/madrasa_brand_button">
 
                 <androidx.appcompat.widget.AppCompatButton
                     style="@style/edX.Widget.CreationButton"

@@ -7,24 +7,24 @@
           "android"
         ],
         "image": "screen_1",
-        "title": "New Look and Feel",
-        "message": "Notice something different? We’ve modernized our look and started making updates that make it easier for you to achieve your learning goals."
+        "title": "מראה ותחושה חדשים",
+        "message": "שמת לב למשהו שונה? חידשנו את האתר שלנו והוספנו עדכונים כדי שיהיה לך קל יותר להשיג את מטרות הלמידה שלך."
       },
       {
         "platforms": [
           "android"
         ],
         "image": "screen_2",
-        "title": "All Course Dates at a Glance",
-        "message": "See all the important dates of your course at a glance in the dates tab. You'll never miss another deadline!"
+        "title": "כל מועדי הקורס במקום אחד",
+        "message": "תוכל לראות את כל מועדי הקורס החשובים במקום אחד, תחת הלשונית 'מועדים'. כדי שלעולם לא תחמיץ את מועד ההגשה!"
       },
       {
         "platforms": [
           "android"
         ],
         "image": "screen_3",
-        "title": "Personalized Learning Schedules",
-        "message": "When you are enrolled in a self-paced course, you can now see your personalized learning schedule with due dates on your phone. You can also shift due dates if you need to adjust your schedule - your course, your way!"
+        "title": "לוח זמני למידה מותאם אישית",
+        "message": "כעת לאחר שנרשמת לקורס למידה עצמית בקצב אישי, תוכל לראות את לוח זמני הלמידה המותאם אישית ואת מועדי ההגשה דרך הטלפון שלך. בנוסף, תוכל לשנות את מועדי ההגשה אם תצטרך להתאים את לוח הזמנים מחדש - הקורס שלך, בדרך שלך!"
       }
     ]
   },
@@ -36,8 +36,8 @@
           "android"
         ],
         "image": "screen_1",
-        "title": "Improved Discovery Experience",
-        "message": "We've improved the way you search and enroll in your favorite courses & programs."
+        "title": "חווית גילוי משופרת",
+        "message": "שיפרנו את האופן בו אתה מחפש ונרשם לקורסים והתוכניות המועדפים עליך."
       }
     ]
   },
@@ -49,16 +49,16 @@
           "android"
         ],
         "image": "screen_1",
-        "title": "More playback speed options",
-        "message": "We’ve added more options for controlling video speed to meet your needs."
+        "title": "אפשרויות מהירות הפעלה נוספות",
+        "message": "הוספנו אפשרויות נוספות לבקרת מהירות הווידיאו כדי לענות על הצרכים שלך."
       },
       {
         "platforms": [
           "android"
         ],
         "image": "screen_2",
-        "title": "Rewind and forward videos",
-        "message": "We’ve heard you! Now you can rewind or forward videos to get to the exact point where it matters."
+        "title": "קדימה הקלד סרטונים",
+        "message": "שמענו אותך! כעת תוכלו להרים אחורה או להעביר סרטונים כדי להגיע לנקודה המדויקת בה זה חשוב."
       }
     ]
   },
@@ -70,222 +70,24 @@
           "android"
         ],
         "image": "screen_1",
-        "title": "Chromecast Support",
-        "message": "Want to watch course videos on a larger screen? We added Chromecast support and now you can!"
+        "title": "תמיכה של Chromecast",
+        "message": "רוצה לצפות בסרטונים של הקורס על גבי מסך גדול יותר? הוספנו תמיכה ב-Chromecast ועכשיו זה אפשרי!"
       },
       {
         "platforms": [
           "android"
         ],
         "image": "screen_2",
-        "title": "YouTube Player",
-        "message": "Tired of leaving the app to watch YouTube course videos? Now you can view videos with an in-app player."
+        "title": "נגן YouTube",
+        "message": "נמאס לך לצאת מהאפליקציה כדי לצפות בסרטונים של הקורס ב-YouTube? עכשיו אפשר להציג סרטונים בעזרת נגן מובנה באפליקציה."
       },
       {
         "platforms": [
           "android"
         ],
         "image": "screen_3",
-        "title": "Microsoft Login",
-        "message": "You can now register or login with a Microsoft account."
-      }
-    ]
-  },
-  {
-    "version": "2.20",
-    "messages": [
-      {
-        "platforms": [
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Expanded Language Support",
-        "message": "You can now view the edX app in German, French, Portuguese, Chinese, and Turkish. The application uses your device language to specify this setting."
-      }
-    ]
-  },
-  {
-    "version": "2.19",
-    "messages": [
-      {
-        "platforms": [
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Video Play Speed",
-        "message": "Watch and learn at your own pace by adjusting the video play speed controls."
-      },
-      {
-        "platforms": [
-          "android"
-        ],
-        "image": "screen_2",
-        "title": "SD Card Option",
-        "message": "You can now choose to store downloaded videos in your SD card from the settings area."
-      }
-    ]
-  },
-  {
-    "version": "2.18",
-    "messages": [
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Program & Degree Discovery",
-        "message": "You can now search edX programs and degrees using the mobile application!"
-      }
-    ]
-  },
-  {
-    "version": "2.16",
-    "messages": [
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Programs on Mobile",
-        "message": "You can now view your edX programs on the go!"
-      }
-    ]
-  },
-  {
-    "version": "2.15",
-    "messages": [
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Improved Landscape and Rotation Support",
-        "message": "You can now rotate your Android device for improved viewing on most areas of the application."
-      },
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_2",
-        "title": "Show Popular Subjects in Course Discovery",
-        "message": "Browse courses by subject when you are looking for new learning experiences!"
-      }
-    ]
-  },
-  {
-    "version": "2.14",
-    "messages": [
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Bulk Download Subsection Videos",
-        "message": "Easily download all videos within a subsection using the new toggle controls."
-      },
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_2",
-        "title": "Improved Video Streaming Quality",
-        "message": "Video streaming quality will now adapt based on your network. Improve video quality even further by connecting to a WiFi network!"
-      }
-    ]
-  },
-  {
-    "version": "2.13",
-    "messages": [
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Improved Navigation",
-        "message": "Quickly access your courses or discover new courses using the new application navigation."
-      },
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_2",
-        "title": "Bulk Video Download",
-        "message": "Easily download all videos within a course using the new toggle control."
-      }
-    ]
-  },
-  {
-    "version": "2.12",
-    "messages": [
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Improved Course Navigation",
-        "message": "Quickly jump to course videos, discussions, and important dates in your course using new in-course navigation."
-      }
-    ]
-  },
-  {
-    "version": "2.11",
-    "messages": [
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Updated Navigation",
-        "message": "A simplified main menu makes it easier to access and discover courses."
-      },
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_2",
-        "title": "Assignment Due Dates",
-        "message": "You can now see due dates for assignments in the course outline."
-      }
-    ]
-  },
-  {
-    "version": "2.10",
-    "messages": [
-      {
-        "platforms": [
-          "ios",
-          "android"
-        ],
-        "image": "screen_1",
-        "title": "Videos",
-        "message": "The \"Videos\" tab in each course's menu replaces \"My Videos\" in the main menu. Now you can view all the videos in a course in one place!"
-      },
-      {
-        "platforms": [
-          "android"
-        ],
-        "image": "screen_2",
-        "title": "Delete Videos",
-        "message": "In the list of downloaded course videos, use a long press to select videos that you want to delete."
-      },
-      {
-        "platforms": [
-          "ios"
-        ],
-        "image": "screen_2",
-        "title": "Delete Videos",
-        "message": "Swipe left to delete downloaded videos."
+        "title": "כניסת Microsoft",
+        "message": "עכשיו באפשרותך להירשם או להיכנס בעזרת חשבון Microsoft."
       }
     ]
   }
