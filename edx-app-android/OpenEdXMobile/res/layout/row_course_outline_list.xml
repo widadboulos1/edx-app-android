@@ -56,7 +56,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="gone">
 
                 <org.edx.mobile.view.custom.IconImageViewXml
                     android:id="@+id/row_subtitle_icon"
