@@ -164,9 +164,9 @@ public class CourseDetailFragment extends BaseFragment {
         courseDetailFieldLayout = (LinearLayout) view.findViewById(R.id.course_detail_fields);
         if (courseDetail.effort != null && !courseDetail.effort.isEmpty()) {
             ViewHolder holder = createCourseDetailFieldViewHolder(inflater, mCourseDetailLayout);
-            holder.rowIcon.setIcon(FontAwesomeIcons.fa_dashboard);
-            holder.rowFieldName.setText(R.string.effort_field_name);
-            holder.rowFieldText.setText(courseDetail.effort);
+//            holder.rowIcon.setIcon(FontAwesomeIcons.fa_dashboard);
+//            holder.rowFieldName.setText(R.string.effort_field_name);
+//            holder.rowFieldText.setText(courseDetail.effort);
         }
 
         //  About this Course

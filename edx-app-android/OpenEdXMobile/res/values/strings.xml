@@ -452,11 +452,11 @@
     <!--Label showing previous unit in a sub-section on assessment navigation bar-->
     <string name="assessment_previous">הקודם</string>
     <!--Label showing assessment only available on website-->
-    <string name="assessment_not_available">רכיב אינטראקטיבי זה עדיין לא זמין בסלולר.</string>
+    <string name="assessment_not_available">רכיב אינטראקטיבי לא נתמך</string>
     <!--Label showing assessment only available on website-->
     <string name="assessment_explore_on_web">עיינו בחלקים אחרים של קורס זה או צפו בחלק זה ברשת.</string>
     <!--Button to show wiew on web for assessment-->
-    <string name="assessment_view_on_web">צפו ברשת</string>
+    <string name="assessment_view_on_web">לצפייה בדפדפן</string>
     <!--Label to show empty assessment-->
     <string name="assessment_empty">לא קיימים חומרי לימוד בחלק זה.</string>
     <!--Label to show a course will be starting soon-->

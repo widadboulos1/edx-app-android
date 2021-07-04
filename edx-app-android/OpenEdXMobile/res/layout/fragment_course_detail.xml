@@ -17,15 +17,8 @@
         android:paddingTop="@dimen/common_course_display_margin_top"
         android:textColor="@color/primaryBaseColor"
         android:textSize="@dimen/edx_base"
+        android:visibility="gone"
         tools:text="Bacon ipsum dolor amet bresaola bacon shoulder chicken beef ribs rump andouille turkey pig frankfurter tail sausage leberkas fatback." />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_enroll_now"
-        style="@style/edX.Widget.EnrollButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_course_display_margin_top"
-        android:padding="@dimen/widget_margin" />
 
     <LinearLayout
         android:id="@+id/course_detail_fields"
@@ -34,24 +27,23 @@
         android:divider="@drawable/edx_x_divider"
         android:orientation="vertical"
         android:showDividers="middle"
-        android:visibility="gone"
-        >
+        android:visibility="visible">
 
 
         <FrameLayout
             android:id="@+id/course_detail_course_about"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_course_display_margin_top"
             android:layout_marginBottom="@dimen/common_course_display_margin_top"
             android:background="@color/neutralLight"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <org.edx.mobile.view.custom.EdxWebView
                 android:id="@+id/course_detail_course_about_webview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/neutralLight"
                 android:scrollbars="none" />
 
@@ -65,5 +57,13 @@
         </FrameLayout>
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_enroll_now"
+        style="@style/edX.Widget.EnrollButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_course_display_margin_top"
+        android:padding="@dimen/widget_margin" />
 
 </LinearLayout>
