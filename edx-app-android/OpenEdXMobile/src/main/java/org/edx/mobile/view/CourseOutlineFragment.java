@@ -62,6 +62,7 @@ import org.edx.mobile.model.api.CourseUpgradeResponse;
 import org.edx.mobile.model.api.EnrolledCoursesResponse;
 import org.edx.mobile.model.api.ProfileModel;
 import org.edx.mobile.model.course.BlockPath;
+import org.edx.mobile.model.course.BlockType;
 import org.edx.mobile.model.course.CourseBannerInfoModel;
 import org.edx.mobile.model.course.CourseComponent;
 import org.edx.mobile.model.course.CourseStructureV1Model;
@@ -393,8 +394,18 @@ public class CourseOutlineFragment extends OfflineSupportBaseFragment
                 listView.clearChoices();
                 final CourseComponent component = adapter.getItem(position).component;
                 if (component.isContainer()) {
-                    environment.getRouter().showCourseContainerOutline(CourseOutlineFragment.this,
-                            REQUEST_SHOW_COURSE_UNIT_DETAIL, courseData, courseUpgradeData, component.getId(), null, isVideoMode);
+//                    madrasa flow customization - to show verticals instead of units - BEGIN
+                    if (component.getType() == BlockType.VERTICAL){
+                        environment.getRouter().showCourseUnitDetail(CourseOutlineFragment.this,
+                                REQUEST_SHOW_COURSE_UNIT_DETAIL, courseData, courseUpgradeData, component.getChildren().get(0).getId(), isVideoMode);
+                    }
+                    else{
+                        environment.getRouter().showCourseContainerOutline(CourseOutlineFragment.this,
+                                REQUEST_SHOW_COURSE_UNIT_DETAIL, courseData, courseUpgradeData, component.getId(), null, isVideoMode);
+                    }
+//                    madrasa flow customization - END
+//                    environment.getRouter().showCourseContainerOutline(CourseOutlineFragment.this,
+//                            REQUEST_SHOW_COURSE_UNIT_DETAIL, courseData, courseUpgradeData, component.getId(), null, isVideoMode);
                 } else {
                     environment.getRouter().showCourseUnitDetail(CourseOutlineFragment.this,
                             REQUEST_SHOW_COURSE_UNIT_DETAIL, courseData, courseUpgradeData, component.getId(), isVideoMode);

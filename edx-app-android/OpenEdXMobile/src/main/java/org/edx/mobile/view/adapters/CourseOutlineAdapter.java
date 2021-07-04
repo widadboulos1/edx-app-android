@@ -218,21 +218,46 @@ public class CourseOutlineAdapter extends BaseAdapter {
         this.rootComponent = component;
         clearCourseOutlineData();
         if (rootComponent != null) {
+            //madrasa flow customization - to show verticals instead of units - BEGIN
+            if(rootComponent.getType() == BlockType.VERTICAL){
+                rootComponent = rootComponent.getParent();
+            }
+            //madrasa flow customization - to show verticals instead of units - END
+
             List<IBlock> children = rootComponent.getChildren();
             for (IBlock block : children) {
                 CourseComponent comp = (CourseComponent) block;
                 if (isVideoMode && comp.getVideos().size() == 0)
                     continue;
                 if (comp.isContainer()) {
-                    SectionRow header = new SectionRow(SectionRow.SECTION, comp);
-                    adapterData.add(header);
-                    for (IBlock childBlock : comp.getChildren()) {
-                        CourseComponent child = (CourseComponent) childBlock;
-                        if (isVideoMode && child.getVideos().size() == 0)
-                            continue;
-                        SectionRow row = new SectionRow(SectionRow.ITEM, false, child);
-                        adapterData.add(row);
+
+                    //madrasa flow customization - to show verticals instead of units - BEGIN
+                    if(comp.getType() == BlockType.VERTICAL){
+                        SectionRow item = new SectionRow(SectionRow.ITEM, true, comp);
+                        adapterData.add(item);
+
+                    }else{
+                        SectionRow header = new SectionRow(SectionRow.SECTION, comp);
+                        adapterData.add(header);
+                        for (IBlock childBlock : comp.getChildren()) {
+                            CourseComponent child = (CourseComponent) childBlock;
+                            if (isVideoMode && child.getVideos().size() == 0)
+                                continue;
+                            SectionRow row = new SectionRow(SectionRow.ITEM, false, child);
+                            adapterData.add(row);
+                        }
                     }
+
+                    //madrasa flow customization - to show verticals instead of units - END
+//                    SectionRow header = new SectionRow(SectionRow.SECTION, comp);
+//                    adapterData.add(header);
+//                    for (IBlock childBlock : comp.getChildren()) {
+//                        CourseComponent child = (CourseComponent) childBlock;
+//                        if (isVideoMode && child.getVideos().size() == 0)
+//                            continue;
+//                        SectionRow row = new SectionRow(SectionRow.ITEM, false, child);
+//                        adapterData.add(row);
+//                    }
                 } else {
                     SectionRow row = new SectionRow(SectionRow.ITEM, true, comp);
                     adapterData.add(row);
@@ -374,7 +399,7 @@ public class CourseOutlineAdapter extends BaseAdapter {
                 viewHolder.rowSubtitle.setText(R.string.not_available_on_mobile);
                 viewHolder.rowType.setIconColorResource(R.color.primaryXLightColor);
             }
-            viewHolder.rowSubtitlePanel.setVisibility(View.VISIBLE);
+            viewHolder.rowSubtitlePanel.setVisibility(View.GONE);
             viewHolder.rowSubtitle.setVisibility(View.VISIBLE);
         }
     }
@@ -404,7 +429,7 @@ public class CourseOutlineAdapter extends BaseAdapter {
         viewHolder.rowType.setIcon(FontAwesomeIcons.fa_film);
         viewHolder.numOfVideoAndDownloadArea.setVisibility(View.VISIBLE);
         viewHolder.bulkDownload.setVisibility(View.VISIBLE);
-        viewHolder.rowSubtitlePanel.setVisibility(View.VISIBLE);
+        viewHolder.rowSubtitlePanel.setVisibility(View.GONE);
         if (videoData.getDuration() > 0L) {
             viewHolder.rowSubtitle.setVisibility(View.VISIBLE);
             viewHolder.rowSubtitle.setText(videoData.getDurationReadable());
@@ -511,7 +536,7 @@ public class CourseOutlineAdapter extends BaseAdapter {
         holder.numOfVideoAndDownloadArea.setVisibility(View.VISIBLE);
         if (component.isGraded()) {
             holder.bulkDownload.setVisibility(View.INVISIBLE);
-            holder.rowSubtitlePanel.setVisibility(View.VISIBLE);
+            holder.rowSubtitlePanel.setVisibility(View.GONE);
             holder.rowSubtitleIcon.setVisibility(View.VISIBLE);
             holder.rowSubtitle.setVisibility(View.VISIBLE);
             holder.rowSubtitle.setText(component.getFormat());
