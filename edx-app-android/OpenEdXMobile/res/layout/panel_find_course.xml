@@ -38,7 +38,7 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/course_btn"
                     style="@style/edX.Widget.ActionBrandPillButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="357dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/edx_margin"
                     android:background="@drawable/madrasa_brand_button"
