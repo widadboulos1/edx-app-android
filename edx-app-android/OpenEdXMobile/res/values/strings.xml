@@ -189,10 +189,10 @@
     <!--NOTE: TODO - not final one-->
     <string name="discussion_subtitle">הצטרפו לשיחה</string>
     <!--Row of Handouts on dashboard screen-->
-    <string name="handouts_title">מסמכים למסירה</string>
+    <string name="handouts_title">תכני קורס להורדה</string>
     <!--Row of Handouts on dashboard screen-->
     <!--NOTE: TODO - not final one-->
-    <string name="handouts_subtitle">מצאו מידע חשוב אודות הקורס</string>
+    <string name="handouts_subtitle">צפו בתכנים נלווים לקורס</string>
     <!--Row of announcement on dashboard screen-->
     <string name="announcement_title">הודעות</string>
     <!--Title text for the important dates section on the course dashboard-->
