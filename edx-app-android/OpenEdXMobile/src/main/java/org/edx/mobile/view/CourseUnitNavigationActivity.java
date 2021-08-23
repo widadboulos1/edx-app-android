@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -69,6 +70,9 @@ public class CourseUnitNavigationActivity extends CourseBaseActivity implements
     private TextView mNextUnitLbl;
     @InjectView(R.id.prev_unit_title)
     private TextView mPreviousUnitLbl;
+
+    @InjectView(R.id.progressIndication)
+    private ProgressBar progressIndication;
 
     @Inject
     private CourseAPI courseApi;
@@ -252,7 +256,20 @@ public class CourseUnitNavigationActivity extends CourseBaseActivity implements
 
         findViewById(R.id.course_unit_nav_bar).requestLayout();
 
-        setTitle(selectedUnit.getDisplayName());
+        //setTitle(selectedUnit.getDisplayName());
+        //Change title to vertical name
+        setTitle(selectedUnit.getParent().getDisplayName());
+
+        double size = selectedUnit.getParent().getChildren().size();
+        double indexInParent = 0;
+        for (int i = 0; i < size; i++){
+            if (selectedUnit.getParent().getChildren().get(i).getId().equals(selectedUnit.getId())){
+                indexInParent = i;
+            }
+        }
+        double progress = (indexInParent / size) * 100.0;
+        progressIndication.setProgress((int)progress);
+
 
         String currentSubsectionId = selectedUnit.getParent().getId();
         if (curIndex + 1 <= pagerAdapter.getItemCount() - 1) {
