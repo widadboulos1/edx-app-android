@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/create_new_item_layout"
     style="@style/footer_action_button"
+    android:background="#5D82D9"
+    android:layout_margin="20dp"
     android:layout_alignParentBottom="true"
     android:orientation="horizontal">
 
