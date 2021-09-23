@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
@@ -123,6 +124,12 @@ public class URLInterceptorWebViewClient extends WebViewClient {
                 FileUtil.chooseFiles(activity, fileChooserParams.getAcceptTypes());
                 return true;
             }
+
+            @Override
+            public void onPermissionRequest(final PermissionRequest request) {
+                request.grant(request.getResources());
+            }
+
         });
     }
 
