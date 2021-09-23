@@ -30,14 +30,6 @@
 
             <include layout="@layout/toolbar" />
 
-            <ProgressBar
-                android:id="@+id/progressIndication"
-                style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
-
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:foregroundTint="#3F51B5"
-                android:scaleY="3" />
 
             <FrameLayout
                 android:id="@+id/content_error_root"

@@ -71,8 +71,6 @@ public class CourseUnitNavigationActivity extends CourseBaseActivity implements
     @InjectView(R.id.prev_unit_title)
     private TextView mPreviousUnitLbl;
 
-    @InjectView(R.id.progressIndication)
-    private ProgressBar progressIndication;
 
     @Inject
     private CourseAPI courseApi;
@@ -268,7 +266,7 @@ public class CourseUnitNavigationActivity extends CourseBaseActivity implements
             }
         }
         double progress = (indexInParent / size) * 100.0;
-        progressIndication.setProgress((int)progress);
+//        progressIndication.setProgress((int)progress);
 
 
         String currentSubsectionId = selectedUnit.getParent().getId();
